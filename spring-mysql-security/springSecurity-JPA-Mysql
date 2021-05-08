@@ -1,0 +1,6 @@
+
+This project demonstrates how to do JPA Authentication with Spring Security and MySQL
+It will describe how spring security will get the user info from MySQL DB for authentication
+purpose through JPA.
+
+For this we have made tables of user ,roles  in MySQL.
