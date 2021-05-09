@@ -4,3 +4,24 @@ It will describe how spring security will get the user info from MySQL DB for au
 purpose through JPA.
 
 For this we have made tables of user ,roles  in MySQL.
+
+As we have learnt in the first tutorial how spring security works like below :
+
+Client enters the credentials
+It goes through the Authentication filter first
+Filter provides the input as credentials(in AUTHENTICATION object) to AuthenticationManger.
+AuthenticationManager then calls its authenticate() method which in turns call the AuthenticationProvider
+AuthenticationProvider first through support() method checks whether the authentication is supported or not.
+If supported it then calls the authenticate method and retrieve the user details from UserDetailService.
+UserDetailService through its loadUserByUsername takes the username and provide the AuthenticationProvider with the USER object which contains all the information.
+The USER information then passed back to provider and then manager and then as an output from Filter.
+
+**************************************************************************************
+
+Now For JPA there is no out of the box authentication in spring security. We have to make our own userDetailService
+which gonna return the user by UserName. till the time we can provide the user by username through this service we can just make
+our own custom UserDetailsService. So in our first example we have just made our own UserDEtailsService and passed hardcoded userDetails.
+
+Now till now we have not used JPS but now as we know we have to just return the UserDetails based on the userName and we know
+we can do this using JPA. Hence we will first make an Entity class and then just make a datarepository extending JPARepository
+and hence make an implementation for loadUserByUsername() in our UserDetailService.
